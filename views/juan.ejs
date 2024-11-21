@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= title %></title>
+
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <%- include('header') %>
-    <h1><%= salut %></h1>
+
+
     <div id="github-contributions"></div>
     <script src="https://cdn.jsdelivr.net/npm/github-contributions-widget@latest/dist/github-contributions-widget.min.js"></script>
     <script>
         new GitHubCalendar("#github-contributions", "your-github-username");
     </script>
-    <%- include('footer') %>
+
 </body>
 </html>
