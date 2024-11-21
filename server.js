@@ -11,7 +11,7 @@ require('dotenv').config();
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://group3.com/auth/google/callback'
+    callbackURL: 'http://localhost:3000/auth/google/callback'
 }, function(accessToken, refreshToken, profile, cb) {
     return cb(null, profile);
 }));
@@ -55,7 +55,7 @@ app.get('/auth/google/callback',
 );
 
 app.get('/portfolio', (req, res) => {
-    if (req.user && (req.user.emails[0].value === 'admin1@example.com' || req.user.emails[0].value === 'admin2@example.com')) {
+    if (req.user && (req.user.emails[0].value === process.env.ADMIN1 || req.user.emails[0].value === 'admin2@example.com')) {
         res.render('portfolio', { title: 'Group 3 - Portfolio', username: req.user.displayName });
     } else {
         res.redirect('/login');
@@ -63,7 +63,7 @@ app.get('/portfolio', (req, res) => {
 });
 
 app.get('/portfolio/minseuk', (req, res) => {
-    res.render('minseuk', { title: 'Min Seuk Kim - Portfolio' });
+    res.render('eddy', { title: 'Min Seuk Kim - Portfolio' });
 });
 
 app.get('/portfolio/juan', (req, res) => {
