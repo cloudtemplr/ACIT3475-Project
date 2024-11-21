@@ -6,12 +6,23 @@
 </head>
 <body>
     <%- include('header') %>
-    <h1><%= salut %></h1>
-    <div id="github-contributions"></div>
+    <h1>About me</h1>
+    <div class="about">
+        <p>I am Min Seuk Kim</p>
+    </div>
+    <h1>Projects</h1>
+    <div class="projects">
+        <p>Project 1</p>
+        <p>Project 2</p>
+        <p>Project 3</p>
+    </div>
+    <h1>Github-Contributions</h1>
+    <div id="github-contributions">
     <script src="https://cdn.jsdelivr.net/npm/github-contributions-widget@latest/dist/github-contributions-widget.min.js"></script>
     <script>
         new GitHubCalendar("#github-contributions", "your-github-username");
     </script>
+    </div>
     <%- include('footer') %>
 </body>
 </html>
