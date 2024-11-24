@@ -1,6 +1,11 @@
 body {
-    background-color: black;
-    color: white; 
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0); 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: scroll;
 }
 .container {
     text-align: center; 
@@ -18,4 +23,78 @@ button {
 
 button:hover {
     background-color: gray; 
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+#home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('../images/memphis.jpg');
+    background-size: cover;
+    object-fit: cover;
+    color: #fff;
+    height: 40vh;
+    padding: 5rem 1rem;
+}
+
+#home h1 {
+    font-size: 2rem;
+}
+
+#jprof {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%;
+    object-fit: cover; 
+    border: 2px solid #333333;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 2rem 1rem;
+    
+}
+
+#about p {
+    width: 60%;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+#projects {
+    background: #dfdfdf;
+}
+
+#projects .project {
+    display: inline-block;
+    margin: 15px;
+    text-align: center;
 }
