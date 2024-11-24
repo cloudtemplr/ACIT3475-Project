@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script type="module" defer src="https://cdn.jsdelivr.net/gh/imananoosheh/github-contributions-fetch@latest/github_calendar_widget.js"></script>
 </head>
 <body> 
     <section id="home">
@@ -27,22 +28,26 @@
     
     <section id="projects">
         <h2>My Projects</h2>
-        <div class="project">
-            <p>Project 1: [Description]</p>
-        </div>
-        <div class="project">
-            <p>Project 2: [Description]</p>
-        </div>
+        <h3>BChat</h3>
+        <img src="/images/bchat.png" alt="Project 1">
+        <p>BChat is an online media social platform that is made for BCIT students focusing on communication feature like chatting but also include features like uploading content and profile.
+        I worked on developing the chatting feature between students using socket.io and also responsible for the frontend of the chatting page. Using the database, I also implemented a sidebar for chatting history where all the previous chat with other students are shown and can be accessed</p>
+
+        <h3>PHSA</h3>
+        <img src="/images/phsa.jpeg" alt="Project 2">
+        <p>Provincial Health Services Authority is a health authority that provides specialized health care services, supports health professionals, and manages health care resources across the province. My team was assigned a project from PHSA to create a website with several features. I worked on creating a chatbot using OpenAI API to assist preceptors with their evalution of students their currently responsible for.</p>
+
     </section>
     
     <section id="github">
         <h2>GitHub Contributions</h2>
+        <div id="calendar-component" username="KyouuT" theme-color="#333333" background-color="#fff"></div>
             <div id="github-contributions"></div>
             <script src="https://cdn.jsdelivr.net/npm/github-contributions-widget@latest/dist/github-contributions-widget.min.js"></script>
             <script>
                 new GitHubCalendar("#github-contributions", "your-github-username");
             </script>
-        <p>Check out my GitHub profile for more contributions: <a href="https://github.com/[YourGitHubUsername]" target="_blank">GitHub Profile</a></p>
+        <p>Check out my GitHub profile for more contributions: <a href="https://github.com/KyouuT" target="_blank">GitHub Profile</a></p>
     </section>
 
     <script src="script.js"></script>
