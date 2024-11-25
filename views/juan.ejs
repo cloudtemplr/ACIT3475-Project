@@ -1,17 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
     <link rel="stylesheet" href="/css/style.css">
+    <script type="module" defer src="https://cdn.jsdelivr.net/gh/imananoosheh/github-contributions-fetch@latest/github_calendar_widget.js"></script>
 </head>
-<body>
+<body> 
+    <section id="home">
+        <img id="jprof" src="/images/cat.jpg" alt="Profile Picture">
+        <h1>Juan Antony Tarigan</h1>
+    </section>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <p>I’m a student at the British Columbia Institute of Technology (BCIT), currently pursuing a diploma in Computer Information Technology. My academic journey has been fueled by a deep passion for technology and innovation, with a particular focus on web development. While I enjoy all aspects of creating web applications, I find backend development especially fulfilling. Building functional, user-focused features and crafting efficient, scalable systems are where I thrive.
+        </p>
+        <p>
+        I enjoy exploring new programming languages, frameworks, and tools to expand my skill set and stay updated with the latest trends in technology. I am particularly drawn to problem-solving, whether it’s designing secure databases, optimizing server performance, or debugging complex issues.
+            
+        When I’m not coding, I enjoy diving into tech-related discussions, learning about cloud technologies, and experimenting with personal projects that challenge my creativity and technical knowledge. My ultimate goal is to contribute to impactful projects that improve user experiences and solve real-world problems.
+            
+        I’m always eager to learn, grow, and collaborate with like-minded individuals in the tech community.
+        </p>
+    </section>
+    
+    <section id="projects">
+        <h2>My Projects</h2>
+        <h3>BChat</h3>
+        <img src="/images/bchat.png" alt="Project 1">
+        <p>BChat is an online media social platform that is made for BCIT students focusing on communication feature like chatting but also include features like uploading content and profile.
+        I worked on developing the chatting feature between students using socket.io and also responsible for the frontend of the chatting page. Using the database, I also implemented a sidebar for chatting history where all the previous chat with other students are shown and can be accessed</p>
 
+        <h3>PHSA</h3>
+        <img src="/images/phsa.jpeg" alt="Project 2">
+        <p>Provincial Health Services Authority is a health authority that provides specialized health care services, supports health professionals, and manages health care resources across the province. My team was assigned a project from PHSA to create a website with several features. I worked on creating a chatbot using OpenAI API to assist preceptors with their evalution of students their currently responsible for.</p>
 
-    <div id="github-contributions"></div>
-    <script src="https://cdn.jsdelivr.net/npm/github-contributions-widget@latest/dist/github-contributions-widget.min.js"></script>
-    <script>
-        new GitHubCalendar("#github-contributions", "your-github-username");
-    </script>
+    </section>
+    
+    <section id="github">
+        <h2>GitHub Contributions</h2>
+        <div id="calendar-component" username="KyouuT" theme-color="#333333" background-color="#fff"></div>
+            <div id="github-contributions"></div>
+            <script src="https://cdn.jsdelivr.net/npm/github-contributions-widget@latest/dist/github-contributions-widget.min.js"></script>
+            <script>
+                new GitHubCalendar("#github-contributions", "your-github-username");
+            </script>
+        <p>Check out my GitHub profile for more contributions: <a href="https://github.com/KyouuT" target="_blank">GitHub Profile</a></p>
+    </section>
 
+    <script src="script.js"></script>
 </body>
+<script>
+
+</script>
 </html>
+
+
+ 
