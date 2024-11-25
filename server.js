@@ -11,9 +11,9 @@ require('dotenv').config();
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    callbackURL: 'http://localhost:3000/auth/google/callback',
 }, function(accessToken, refreshToken, profile, cb) {
-    return cb(null, profile);
+    cb(null, profile);
 }));
 
 passport.serializeUser(function(user, done) {
@@ -45,7 +45,9 @@ app.get('/login', (req, res) => {
     res.render('login', { title: 'Login' });
 });
 
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'] }));
+
+// Google callback URL
 
 app.get('/auth/google/callback', 
     passport.authenticate('google', { failureRedirect: '/login' }),
@@ -55,12 +57,14 @@ app.get('/auth/google/callback',
 );
 
 app.get('/portfolio', (req, res) => {
-    if (req.user && (req.user.emails[0].value === process.env.ADMIN1 || req.user.emails[0].value === 'admin2@example.com')) {
-        res.render('portfolio', { title: 'Group 3 - Portfolio', username: req.user.displayName });
-    } else {
-        res.redirect('/login');
-    }
-});
+    if (!req.isAuthenticated()) {
+        return res.redirect('/login');
+      }
+      if(req.user.displayName){
+          return res.render('portfolio', { username: req.user.displayName });
+      }
+      res.render('portfolio', { username: req.user.username });
+    });
 
 app.get('/portfolio/minseuk', (req, res) => {
     res.render('eddy', { title: 'Min Seuk Kim - Portfolio' });
