@@ -79,6 +79,30 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+const ensureAdmin1 = (req, res, next) => {
+    if (req.isAuthenticated() && req.user.emails[0].value === process.env.ADMIN1) {
+        return next();
+    }
+    res.redirect('/login');
+};
+
+const ensureAdmin2 = (req, res, next) => {
+    if (req.isAuthenticated() && req.user.emails[0].value === process.env.ADMIN2) {
+        return next();
+    }
+    res.redirect('/login');
+};
+
+app.post('/portfolio/minseuk', ensureAdmin1, (req, res) => {
+    // Min Seuk's portfolio update logic here
+    res.send('Min Seuk\'s portfolio updated');
+});
+
+app.post('/portfolio/juan', ensureAdmin2, (req, res) => {
+    // Juan's portfolio update logic here
+    res.send('Juan\'s portfolio updated');
+});
+
 // 404 handler
 app.use((req, res, next) => {
     res.status(404).render('404', { title: '404 - Page Not Found' });

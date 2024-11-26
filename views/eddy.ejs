@@ -3,26 +3,49 @@
 <head>
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css">
+    <script type="module" defer src="https://cdn.jsdelivr.net/gh/imananoosheh/github-contributions-fetch@latest/github_calendar_widget.js"></script>
 </head>
 <body>
+    <section class="banner">
+        <h1>Min Seuk Kim</h1>
+    </section>
+    
+    <section class="about">
+        <h1>About Me</h1>
+        <h3>I've transformed my life and can do anything</h3>
+        <p>
+            I'm a student at the British Columbia Institute of Technology (BCIT), currently pursuing a diploma in Computer Information Technology. My academic journey has been fueled by a deep passion for technology and innovation, with a particular focus on database management and server administration. Throughout my studies, I have developed a solid foundation in areas such as network design and programming, which complement my specialization in databases and server systems.
+        </p>
+        <p>
+            Driven by a desire to solve real-world problems, I enjoy applying theoretical knowledge to practical scenarios, whether it's optimizing database performance, configuring secure and efficient server environments, or exploring emerging technologies like cloud computing. My coursework has provided me with hands-on experience in working with tools and platforms like MySQL, Windows Server, and Linux, as well as virtualization technologies like VMware and Hyper-V.
+        </p>
+    </section>
+    
+    <section class="projects">
+        <h1>Projects</h1>
+        <h3>Unolingo</h3>
+        <img src="/images/Duck_define.png" alt="Project 1" width="150px" height="150px">
+        <p>Description</p>
+        <p>An English learning app that combines fun, interactive lessons with engaging games to make studying english enjoyable and effective. Designed to help users enhance their vocabulary while having fun and staying motivated
+           I mostly worked on routing and login features, as well as the backend database to store user information and progress. I also implemented a feature that allows users to track their progress and see their improvement over time. 
+        </p>
+        
 
-    <h1>About me</h1>
-    <div class="about">
-        <p>I am Min Seuk Kim</p>
-    </div>
-    <h1>Projects</h1>
-    <div class="projects">
-        <p>Project 1</p>
-        <p>Project 2</p>
+        <h3>PHSA AI Placement Web App</h3>
+        <img src="/images/phsa-banner.png" alt="Project 2" width="250px" height="150px">
         <p>Project 3</p>
-    </div>
-    <h1>Github-Contributions</h1>
-    <div id="github-contributions">
-    <script src="https://cdn.jsdelivr.net/npm/github-contributions-widget@latest/dist/github-contributions-widget.min.js"></script>
-    <script>
-        new GitHubCalendar("#github-contributions", "your-github-username");
-    </script>
-    </div>
-
+    </section>
+    
+    <section id="github">
+        <h2>GitHub Contributions</h2>
+        <div id="calendar-component" username="cloudtemplr" theme-color="#333333" background-color="#fff"></div>
+            <div id="github-contributions"></div>
+            <script src="https://cdn.jsdelivr.net/npm/github-contributions-widget@latest/dist/github-contributions-widget.min.js"></script>
+            <script>
+                new GitHubCalendar("#github-contributions", "your-github-username");
+            </script>
+        <p>Check out my GitHub profile for more contributions: <a href="https://github.com/cloudtemplr" target="_blank">GitHub Profile</a></p>
+    </section>
+    <script src="script.js"></script>
 </body>
 </html>
