@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
+const e = require('express');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const app = express();
@@ -56,6 +57,19 @@ app.get('/auth/google/callback',
     }
 );
 
+const ensureAdmin1 = (req, res, next) => {
+    if (req.isAuthenticated() && req.user.emails[0].value === process.env.ADMIN1) {
+        return true;
+    }
+};
+
+const ensureAdmin2 = (req, res, next) => {
+    if (req.isAuthenticated() && req.user.emails[0].value === process.env.ADMIN2) {
+        return true;
+    }
+};
+
+
 app.get('/portfolio', (req, res) => {
     if (!req.isAuthenticated()) {
         return res.redirect('/login');
@@ -67,40 +81,38 @@ app.get('/portfolio', (req, res) => {
     });
 
 app.get('/portfolio/minseuk', (req, res) => {
-    res.render('eddy', { title: 'Min Seuk Kim - Portfolio' });
+    const admin1 = ensureAdmin1(req);
+    const admin2 = ensureAdmin2(req);
+    res.render('eddy', { 
+        title: 'Min Seuk Kim - Portfolio', 
+        admin1,
+        admin2});
 });
 
 app.get('/portfolio/juan', (req, res) => {
-    res.render('juan', { title: 'Juan - Portfolio' });
+    const admin1 = ensureAdmin1(req);
+    const admin2 = ensureAdmin2(req);
+    res.render('juan', { 
+        title: 'Juan - Portfolio', 
+        admin1,
+        admin2});
 });
 
 app.get('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
+    req.logout(err => {
+        if (err) console.log(err)
+      });
+    res.redirect('/login');
 });
 
-const ensureAdmin1 = (req, res, next) => {
-    if (req.isAuthenticated() && req.user.emails[0].value === process.env.ADMIN1) {
-        return next();
-    }
-    res.redirect('/login');
-};
-
-const ensureAdmin2 = (req, res, next) => {
-    if (req.isAuthenticated() && req.user.emails[0].value === process.env.ADMIN2) {
-        return next();
-    }
-    res.redirect('/login');
-};
-
-app.post('/portfolio/minseuk', ensureAdmin1, (req, res) => {
+app.post('/portfolio/update/minseuk', ensureAdmin1, (req, res) => {
     // Min Seuk's portfolio update logic here
-    res.send('Min Seuk\'s portfolio updated');
+    res.render('eddy', { title: 'Min Seuk Kim - Portfolio' });
 });
 
-app.post('/portfolio/juan', ensureAdmin2, (req, res) => {
+app.post('/portfolio/update/juan', ensureAdmin2, (req, res) => {
     // Juan's portfolio update logic here
-    res.send('Juan\'s portfolio updated');
+    res.render('juan', { title: 'Juan - Portfolio' });
 });
 
 // 404 handler

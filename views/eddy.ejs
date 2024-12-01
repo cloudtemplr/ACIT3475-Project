@@ -19,6 +19,9 @@
         <p>
             Driven by a desire to solve real-world problems, I enjoy applying theoretical knowledge to practical scenarios, whether it's optimizing database performance, configuring secure and efficient server environments, or exploring emerging technologies like cloud computing. My coursework has provided me with hands-on experience in working with tools and platforms like MySQL, Windows Server, and Linux, as well as virtualization technologies like VMware and Hyper-V.
         </p>
+        <% if (!admin2 && admin1)  { %>
+            <button onclick="enableEditing('about-content')">Edit</button>
+        <% } %>
     </section>
     
     <section class="projects">

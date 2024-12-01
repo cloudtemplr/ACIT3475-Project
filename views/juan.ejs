@@ -24,6 +24,9 @@
             
         I’m always eager to learn, grow, and collaborate with like-minded individuals in the tech community.
         </p>
+        <% if (!admin1 && admin2)  { %>
+            <button onclick="enableEditing('about')">Edit</button>
+        <% } %>
     </section>
     
     <section id="projects">
@@ -53,7 +56,6 @@
     <script src="script.js"></script>
 </body>
 <script>
-
 </script>
 </html>
 

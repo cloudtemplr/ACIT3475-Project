@@ -1,14 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .logout {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #FF5C5C;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .logout:hover {
+            background-color: #e04a4a;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome, <%= username %></h1>
-    <ul>
-        <li><a href="/portfolio/minseuk">Min Seuk's Portfolio</a></li>
-        <li><a href="/portfolio/juan">Juan's Portfolio</a></li>
-    </ul>
-    <a href="/logout">Logout</a>
+    <div class="container">
+        <h1>Welcome, <%= username %></h1>
+        <ul>
+            <li><a href="/portfolio/minseuk">Min Seuk's Portfolio</a></li>
+            <li><a href="/portfolio/juan">Juan's Portfolio</a></li>
+        </ul>
+        <a href="/logout" class="logout">Logout</a>
+    </div>
 </body>
 </html>
