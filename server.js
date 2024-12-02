@@ -2,11 +2,14 @@ const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
 const e = require('express');
+const bodyParser = require('body-parser');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const app = express();
 
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(express.static('public'));
 require('dotenv').config();
 passport.use(new GoogleStrategy({
@@ -80,6 +83,9 @@ app.get('/portfolio', (req, res) => {
       res.render('portfolio', { username: req.user.username });
     });
 
+
+let aboutJuan="I’m a student at the British Columbia Institute of Technology (BCIT), currently pursuing a diploma in Computer Information Technology. My academic journey has been fueled by a deep passion for technology and innovation, with a particular focus on web development. While I enjoy all aspects of creating web applications, I find backend development especially fulfilling. Building functional, user-focused features and crafting efficient, scalable systems are where I thrive.<br><br>I enjoy exploring new programming languages, frameworks, and tools to expand my skill set and stay updated with the latest trends in technology. I am particularly drawn to problem-solving, whether it’s designing secure databases, optimizing server performance, or debugging complex issues. <br><br>When I’m not coding, I enjoy diving into tech-related discussions, learning about cloud technologies, and experimenting with personal projects that challenge my creativity and technical knowledge. My ultimate goal is to contribute to impactful projects that improve user experiences and solve real-world problems.I’m always eager to learn, grow, and collaborate with like-minded individuals in the tech community."
+    
 app.get('/portfolio/minseuk', (req, res) => {
     const admin1 = ensureAdmin1(req);
     const admin2 = ensureAdmin2(req);
@@ -95,7 +101,19 @@ app.get('/portfolio/juan', (req, res) => {
     res.render('juan', { 
         title: 'Juan - Portfolio', 
         admin1,
-        admin2});
+        admin2,
+        aboutJuan});
+});
+
+app.post('/portfolio/update/minseuk', (req, res) => {
+    // Min Seuk's portfolio update logic here
+    res.render('eddy', { title: 'Min Seuk Kim - Portfolio' });
+});
+
+app.post('/portfolio/update/juan', (req, res) => {
+    // Juan's portfolio update logic here
+    aboutJuan = req.body.aboutText;
+    res.redirect('/portfolio/juan');
 });
 
 app.get('/logout', (req, res) => {

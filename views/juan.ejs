@@ -15,30 +15,31 @@
     
     <section id="about">
         <h2>About Me</h2>
-        <p>I’m a student at the British Columbia Institute of Technology (BCIT), currently pursuing a diploma in Computer Information Technology. My academic journey has been fueled by a deep passion for technology and innovation, with a particular focus on web development. While I enjoy all aspects of creating web applications, I find backend development especially fulfilling. Building functional, user-focused features and crafting efficient, scalable systems are where I thrive.
-        </p>
-        <p>
-        I enjoy exploring new programming languages, frameworks, and tools to expand my skill set and stay updated with the latest trends in technology. I am particularly drawn to problem-solving, whether it’s designing secure databases, optimizing server performance, or debugging complex issues.
-            
-        When I’m not coding, I enjoy diving into tech-related discussions, learning about cloud technologies, and experimenting with personal projects that challenge my creativity and technical knowledge. My ultimate goal is to contribute to impactful projects that improve user experiences and solve real-world problems.
-            
-        I’m always eager to learn, grow, and collaborate with like-minded individuals in the tech community.
-        </p>
+        <p id="aboutText"><%- aboutJuan %></p>
         <% if (!admin1 && admin2)  { %>
-            <button onclick="enableEditing('about')">Edit</button>
+            <form action="/portfolio/update/juan" method="POST" id="editForm" style="display: none;">
+                <textarea name="aboutText" rows="10" cols="50"><%= aboutJuan %></textarea>
+                <button type="submit">Save</button>
+            </form>
+            <button onclick="toggleEdit()">Edit</button>
         <% } %>
     </section>
     
     <section id="projects">
+        <div id="projectList">
         <h2>My Projects</h2>
-        <h3>BChat</h3>
-        <img src="/images/bchat.png" alt="Project 1">
-        <p>BChat is an online media social platform that is made for BCIT students focusing on communication feature like chatting but also include features like uploading content and profile.
-        I worked on developing the chatting feature between students using socket.io and also responsible for the frontend of the chatting page. Using the database, I also implemented a sidebar for chatting history where all the previous chat with other students are shown and can be accessed</p>
+            <h3>BChat</h3>
+            <img src="/images/bchat.png" alt="Project 1">
+            <p>BChat is an online media social platform that is made for BCIT students focusing on communication feature like chatting but also include features like uploading content and profile.
+            I worked on developing the chatting feature between students using socket.io and also responsible for the frontend of the chatting page. Using the database, I also implemented a sidebar for chatting history where all the previous chat with other students are shown and can be accessed</p>
 
-        <h3>PHSA</h3>
-        <img src="/images/phsa.jpeg" alt="Project 2">
-        <p>Provincial Health Services Authority is a health authority that provides specialized health care services, supports health professionals, and manages health care resources across the province. My team was assigned a project from PHSA to create a website with several features. I worked on creating a chatbot using OpenAI API to assist preceptors with their evalution of students their currently responsible for.</p>
+            <h3>PHSA</h3>
+            <img src="/images/phsa.jpeg" alt="Project 2">
+            <p>Provincial Health Services Authority is a health authority that provides specialized health care services, supports health professionals, and manages health care resources across the province. My team was assigned a project from PHSA to create a website with several features. I worked on creating a chatbot using OpenAI API to assist preceptors with their evalution of students their currently responsible for.</p>
+            <% if (!admin1 && admin2)  { %>   
+                <button id="addProjectButton" onclick="addProject()">Add Project</button>
+            <% } %>
+        </div>
 
     </section>
     
@@ -56,6 +57,46 @@
     <script src="script.js"></script>
 </body>
 <script>
+    function toggleEdit() {
+        const aboutText = document.getElementById('aboutText');
+        const editForm = document.getElementById('editForm');
+        if (editForm.style.display === 'none') {
+            aboutText.style.display = 'none';
+            editForm.style.display = 'block';
+        } else {
+            aboutText.style.display = 'block';
+            editForm.style.display = 'none';
+        }
+    }
+
+    function addProject() {
+        // Prompt the user for title and description
+        const title = prompt("Enter the project title:");
+        if (!title) {
+            alert("Title cannot be empty!");
+            return;
+        }
+
+        const description = prompt("Enter the project description:");
+        if (!description) {
+            alert("Description cannot be empty!");
+            return;
+        }
+
+        // Get the project list container
+        const projectList = document.getElementById('projectList');
+
+        // Create new h3 and p elements
+        const newTitle = document.createElement('h3');
+        newTitle.textContent = title;
+
+        const newDescription = document.createElement('p');
+        newDescription.textContent = description;
+
+        // Append the new elements to the project list
+        projectList.appendChild(newTitle);
+        projectList.appendChild(newDescription);
+    }
 </script>
 </html>
 
