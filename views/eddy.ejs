@@ -14,15 +14,20 @@
     <section class="aboutEddy">
         <h1>About Me</h1>
         <h3>I've transformed my life and can do anything</h3>
-        <p>
-            I'm a student at the British Columbia Institute of Technology (BCIT), currently pursuing a diploma in Computer Information Technology. My academic journey has been fueled by a deep passion for technology and innovation, with a particular focus on database management and server administration. Throughout my studies, I have developed a solid foundation in areas such as network design and programming, which complement my specialization in databases and server systems.
-        </p>
-        <p>
-            Driven by a desire to solve real-world problems, I enjoy applying theoretical knowledge to practical scenarios, whether it's optimizing database performance, configuring secure and efficient server environments, or exploring emerging technologies like cloud computing. My coursework has provided me with hands-on experience in working with tools and platforms like MySQL, Windows Server, and Linux, as well as virtualization technologies like VMware and Hyper-V.
-        </p>
+        <p id="aboutText"><%= aboutEddy %></p>
+        <% if (admin1 && !admin2)  { %>
+            <form action="/portfolio/update/minseuk" method="POST" id="editForm" style="display: none;">
+                <textarea name="aboutText" rows="10" cols="50"><%= aboutEddy %></textarea>
+                <button type="submit">Save</button>
+            </form>
+            <div class="button-container">
+                <button onclick="toggleEdit()">Edit</button>
+            </div>
+        <% } %>
     </section>
     
     <section class="Eddyprojects">
+        <div id="projectList">
         <h1>Projects</h1>
         <h2>Unolingo</h2>
         <img src="/images/Duck_define.png" alt="Project 1" width="150px" height="150px">
@@ -37,6 +42,12 @@
         <p>A Web Application that allows Admins to match Health Science Students to preceptors and monitor their progress through an AI algorithm program. Designed to streamline the placement process and improve the overall experience for students and preceptors.
            I was responsible for designing the user interface and implementing the front-end features, such as the student and preceptor profiles, the matching algorithm, and the progress tracking system. I also worked on the backend to ensure that the application could handle large amounts of data and provide accurate matches.
         </p>
+        <% if (admin1 && !admin2)  { %>   
+            <div class="button-container">
+                <button id="addProjectButton" onclick="addProject()">Add Project</button>
+            </div>
+        <% } %>
+        </div>
     </section>
     
     <section id="github">
@@ -51,4 +62,46 @@
     </section>
     <script src="script.js"></script>
 </body>
+<script>
+    function toggleEdit() {
+        const aboutText = document.getElementById('aboutText');
+        const editForm = document.getElementById('editForm');
+        if (editForm.style.display === 'none') {
+            aboutText.style.display = 'none';
+            editForm.style.display = 'block';
+        } else {
+            aboutText.style.display = 'block';
+            editForm.style.display = 'none';
+        }
+    }
+
+    function addProject() {
+        // Prompt the user for title and description
+        const title = prompt("Enter the project title:");
+        if (!title) {
+            alert("Title cannot be empty!");
+            return;
+        }
+
+        const description = prompt("Enter the project description:");
+        if (!description) {
+            alert("Description cannot be empty!");
+            return;
+        }
+
+        // Get the project list container
+        const projectList = document.getElementById('projectList');
+
+        // Create new h3 and p elements
+        const newTitle = document.createElement('h3');
+        newTitle.textContent = title;
+
+        const newDescription = document.createElement('p');
+        newDescription.textContent = description;
+
+        // Append the new elements to the project list
+        projectList.appendChild(newTitle);
+        projectList.appendChild(newDescription);
+    }
+</script>
 </html>

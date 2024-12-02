@@ -136,7 +136,12 @@ section {
     font-size: 2rem;
 }
 
-#projects {
+#github h2 {
+    font-size: 2rem;
+}
+
+
+#projects #projectList {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,13 +168,19 @@ section {
     line-height: 1.6;
 }
 
-.Eddyprojects {
+.Eddyprojects #projectList {
     display: flex;
     flex-direction: column;
     align-items: center;
     background: #000000;
     color: #fff;
-    gap: 10px;
+    width: 100vw; 
+    margin: 0; 
+    position: relative; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    padding: 20px; 
+    box-sizing: border-box;
 }
 
 .Eddyprojects img {
@@ -195,6 +206,29 @@ section {
 
 .Eddyprojects h2 {
     font-size: 1.5rem;
+}
+
+.Eddyprojects #addProjectButton {
+    background-color: white; 
+    color: black; 
+    border: none; 
+    cursor: pointer; 
+    border-radius: 5px;
+    font: bold 14px Arial, sans-serif;
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.Eddyprojects #addProjectButton:hover {
+    background-color: gray; 
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; 
+    width: 100%;
+    padding: 10px 0;
+    margin-right: 100px;
 }
 
 hr {
