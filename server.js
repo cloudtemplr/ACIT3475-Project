@@ -45,9 +45,11 @@ app.get('/login', (req, res) => {
     res.render('login', { title: 'Login' });
 });
 
-app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'] }));
-
-// Google callback URL
+app.get('/auth/google', 
+    passport.authenticate('google', { 
+        scope: ['https://www.googleapis.com/auth/userinfo.profile', 
+            'https://www.googleapis.com/auth/userinfo.email'] 
+}));
 
 app.get('/auth/google/callback', 
     passport.authenticate('google', { failureRedirect: '/login' }),
